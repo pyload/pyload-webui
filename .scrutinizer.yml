@@ -97,10 +97,18 @@ checks:
     format_bad_indentation:
       indentation: '4 spaces'
     classes_no_self_use: true
+  javascript:
+    no_param_assign: true
+    no_implicit_undefined_return: true
+    no_alert: true
+    eqeqeq: true
+    no_loop_var_assign: true
+    no_else_return: true
 tools:
   pylint:
     python_version: '3'
     # config_file: .pylintrc
-# filter:
-  # excluded_paths:
+filter:
+  excluded_paths:
     # - '*/test/*'
+    - '*/vendor/*'
