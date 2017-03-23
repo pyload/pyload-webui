@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import io
 from builtins import dict
@@ -10,6 +10,7 @@ from urllib.parse import unquote
 
 from bottle import HTTPError, parse_auth, request, response, route
 from future import standard_library
+standard_library.install_aliases()
 
 from pyload.core.datatype import ExceptionObject
 from pyload.rpc.jsonconverter import BaseEncoder, dumps, loads
@@ -17,8 +18,6 @@ from pyload.utils import purge
 
 from .interface import API, session
 from .utils import add_json_header, get_user_api, set_session
-
-standard_library.install_aliases()
 
 
 # used for gzip compression

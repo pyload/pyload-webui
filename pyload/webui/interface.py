@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @author: RaNaN
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import os
 import sys
@@ -11,13 +11,13 @@ import bottle
 # Middlewares
 from beaker.middleware import SessionMiddleware
 from future import standard_library
+standard_library.install_aliases()
 
 from pyload.core.thread import webserver as ServerThread  # TODO: Recheck...
 from pyload.utils.web.middleware import PrefixMiddleware, StripPathMiddleware
 # Last routes to register
 from pyload.webui import api, cnl, pyload, setup
 
-standard_library.install_aliases()
 
 WEBDIR = os.path.abspath(os.path.join(os.path.dirname(__file__)))
 APPDIR = os.path.join(WEBDIR, 'app')

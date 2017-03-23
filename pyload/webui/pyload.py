@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @author: RaNaN
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import json
 import os
@@ -9,11 +9,10 @@ import time
 
 from bottle import redirect, request, response, route, static_file, template
 from future import standard_library
+standard_library.install_aliases()
 
 from .interface import API, APPDIR, PREFIX, SETUP, UNAVAILALBE
 from .utils import add_json_header, login_required, select_language
-
-standard_library.install_aliases()
 
 
 # Cache file names that are available gzipped

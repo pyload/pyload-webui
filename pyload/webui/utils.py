@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import re
 
 from bottle import HTTPError, redirect, request
 from future import standard_library
+standard_library.install_aliases()
 
 from .interface import API, SETUP
-
-standard_library.install_aliases()
 
 
 def add_json_header(r):

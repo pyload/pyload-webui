@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import json
 from builtins import dict
@@ -8,11 +8,10 @@ from time import time
 
 from bottle import HTTPError, request, response, route
 from future import standard_library
+standard_library.install_aliases()
 
 from .interface import SETUP
 from .utils import add_json_header
-
-standard_library.install_aliases()
 
 
 # returns http error

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import io
 import os
@@ -13,12 +13,11 @@ from urllib.parse import unquote
 
 from bottle import HTTPError, request, route
 from future import standard_library
+standard_library.install_aliases()
 
 from pyload.utils import format
 
 from .interface import API, DL_ROOT
-
-standard_library.install_aliases()
 
 
 try:

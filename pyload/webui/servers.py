@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from __future__ import absolute_import, division, unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from builtins import object, str
 
 from bottle import ServerAdapter as _ServerAdapter
 from future import standard_library
-
 standard_library.install_aliases()
 
 
