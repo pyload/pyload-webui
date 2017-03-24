@@ -104,7 +104,7 @@ class Sdist(sdist):
 
 
 NAME = "pyload.webui"
-VERSION = "0.1.0"
+VERSION = "1.0.0"
 STATUS = "1 - Planning"
 DESC = """pyLoad WebUI module"""
 LONG_DESC=io.open("README.md").read()
