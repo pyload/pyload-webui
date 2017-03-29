@@ -10,7 +10,7 @@
 #          \  /
 #           \/
 
-# import io
+import io
 import os
 import shutil
 import subprocess
@@ -21,6 +21,33 @@ from setuptools import Command, distutils, setup
 from setuptools.command.sdist import sdist
 
 
+def _get_long_description(fromline=None, lines=None):
+    try:
+        import requests
+    except ImportError:
+        return None
+    with io.open('README.md') as fp1:
+        readme = ''.join(fp1.readlines()[fromline:lines])
+    with io.open('CHANGELOG.md') as fp2:
+        desc = '\r\n\r\n\r\n\r\n'.join([readme, fp2.read()])
+    req = requests.post(
+        url='http://c.docverter.com/convert',
+        data={'from': 'markdown', 'to': 'rst'},
+        files={'input_files[]': ('DESCRIPTION.md', desc)}
+    )
+    return req.text if req.ok else None
+
+    
+def _get_requires(filename):
+    path = os.path.join('requirements', filename)
+    with io.open(path) as fp:
+        return fp.read().splitlines()
+
+        
+def _get_version():
+    return io.open('VERSION').read().strip()
+    
+    
 class Compile(Command):
     """
     Compile the web user interface
@@ -104,25 +131,22 @@ class Sdist(sdist):
 
 
 NAME = "pyload.webui"
-VERSION = "1.0.0"
+VERSION = _get_version()
 STATUS = "1 - Planning"
 DESC = """pyLoad WebUI module"""
-LONG_DESC=io.open("README.md").read()
+LONG_DESC = _get_long_description(fromline=2, lines=19) or ""
 KEYWORDS = ["pyload"]
 URL = "https://pyload.net"
 DOWNLOAD_URL = "https://github.com/pyload/webui/releases"
-LICENSE = "AGPLv3"
+LICENSE = "GNU Affero General Public License v3"
 AUTHOR = "Walter Purcaro"
 AUTHOR_EMAIL = "vuolter@gmail.com"
 PLATFORMS = ['any']
 PACKAGES = ['pyload', 'pyload/webui']
 INCLUDE_PACKAGE_DATA = True
 NAMESPACE_PACKAGES = ['pyload']
-INSTALL_REQUIRES = [
-    'Beaker>=1.6', 'Js2Py', 'bjoern;os_name!="nt"', 'bottle>=0.10', 'future',
-    'pycryptodome', 'pyload.utils'
-]
-SETUP_REQUIRES = ['Babel', 'readme_renderer', 'recommonmark']
+INSTALL_REQUIRES = _get_requires('install.txt')
+SETUP_REQUIRES = _get_requires('setup.txt')
 # TEST_SUITE = ''
 # TESTS_REQUIRE = []
 # EXTRAS_REQUIRE = {}
@@ -156,7 +180,7 @@ CLASSIFIERS = [
     "Programming Language :: Python :: 3.4",
     "Programming Language :: Python :: 3.5",
     "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: Implementation :: PyPy",
     "Topic :: Communications",
     "Topic :: Communications :: File Sharing",
     "Topic :: Internet",

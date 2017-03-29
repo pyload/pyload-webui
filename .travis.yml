@@ -1,26 +1,59 @@
-sudo: false
+sudo: required
 language: python
 branches:
   only: master
 python:
-  - "2.6"
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.6"
-  - "nightly"
-  - "pypy"
-  # - "pypy3"
+  - 2.6
+  - 2.7
+  - 3.3
+  - 3.4
+  - 3.5
+  - 3.6
+  - nightly
+  - pypy
+  # - pypy3
 matrix:
   allow_failures:
-    - "2.6"
-    - "nightly"
-    - "pypy"
-    # - "pypy3"
+    - 2.6
+    - nightly
+    - pypy
+    # - pypy3
   fast_finish: true
 cache: pip
+# before_install:
+  # - sudo apt-get -qq update
+  # - sudo apt-get install -y python-crypto
 install:
   - pip install -U setuptools
   - pip install tox-travis
 script: tox --skip-missing-interpreters
+before_deploy:
+  - test $TRAVIS_TEST_RESULT = 0
+  - test $TRAVIS_EVENT_TYPE != "cron"
+  - pip install requests
+deploy:
+  - provider: pypi
+    user:
+      secure: "dceXV3fE3gN37P4HutHmNdtqCr56YCh97r7L6fV/Ld+RmJXkIjzK4+Pu4GBnIQuV655jjxXz+K1XpDmg/VDYL4db07kDnaGgfix/Ge/xWZmgSiupCsq/I0L44F5wi+fKs9dngS+ZwjiL9sSJv8uJEEg0pUInPEsd+Yo+m974IaYbAim19FPWCEkPQ1s/a23Yy1xJPejp+RVga+qQvHBXuKoLc8JTmigeZnEMZN/cVClPToadbUrdUo2MmCi/zSPsmepZD2m/HwmQCGRfgDT+dtU7uy5jeJ+CrLVlM0xICPRHABC9GcNa/6um3lG6ZjAoFrfuy9YQpU3bLg6TEZElKLqdF6Rb6rv2q0jGtpCImHwZomTVE70cORorL8guE+ocijUard4mW0fKAvQirGHLhYyYSH2FCJkij00fjwuUQpecFjKtbPgVlVvm+SU0swTwWB/1o4Fx4ZCxxmMdTHDbKJiw5fCx0AySNKku9LKu73n61i36/pSWNbS03ufE8bhAJze6QWo7/LeSMmWLRjq/PzutJ+YiXKIsth4SqkBJpIJMMXZAPLvox8wmx893K5c4G06VIcus31gYc+DwaDhfG7J9Aa9Laful6/PxzQPabVKjBpmy1uXMui1ShpfnS+C2/YDwrSOLzazaoJtoAETDyOhy7C5/RbfVw2TDHu+x5Fc="
+    password:
+      secure: "Nr6O/P2k5MXiDVWJoAqyKqw7k9/u4WfPcR+nZiL/UhRAttK0TGsB1T0T55cBuqwik8JhR809GWrO+InKodEDUpdbheBli+tVSZk9q+5vMdzCLl+HG1rslJzKa0QEm1HiU8Tpo5DhPTaWP6gRBZLC+F93ClWrPhrsWUQV5gGdE93NP4PfMqo8UmfhNfI6pEbsKaomjDg4LbX/bWtClXCkJwhwoqHTkoHKEgVYEKH3mVFF+XZYsE4h+H3dB40TjnEWVAGbwoPSOU+1h8uAmKLL+GcCZlpMP5RgS/hKI6c4GGqaM/lEns3PVps9CEHCg/AyeMXoUjtENrmyzbPfEBxXD8V+1t+YnAdLwBrGYqWtVhH4g7kg8Sr1FTW6KdoKeQKAfMDeelBFlJfqeigu6hTth6i7FtTVKi4kOS8LxIKR5y3NdpezAuRDbMcngGs1Qp9sznCVuT2Ek1OhD/TeUg1mmp7BlyGPIC+n3CUi2v2te2E9fJ3od7DYwh574iQQ6ZUEi357dCBE54TUD5BPZRP46Hu+XyKvhFf8N1YJUqkEQqdhc1Py6YEhVZsVH2QvFFVkBbeIj2xvoN34A3+WSdvsK3LQAwTEwwRZfCtvnGTLsDzE63fDMCs/6Q37SA6M9gWpPpS2O/2A4qbwCSu21Yg+WYELvp0iAvS7XYDNn/tZceA="
+    distributions: sdist bdist_wheel
+    skip_cleanup: true
+    skip_upload_docs: true
+    on:
+      branch: master
+      python: 3.5
+      # tags: true
+  - provider: releases
+    api-key: "WP9IiIwWp7hfTSHkcWFuYIfAuQlazg6SWWdHRTJXyZSgkrmSFiA3UrSvv5iSA7OfuJi1AX3mwjPAuZTEGcmJser8x/jE/66kivgp5eZLCXqFc+Qb0jp1+h54gAtTomtsL1rHHadD2reN2DTAABansf49GbpUhtlA9PcJ4eChtMMtQ9Wj6zB4mqzf7qGgmNkyz5U17BvWD7M3hrxCtsgMV4jHaYFJzsUoIY7hcXeUvDVSvekgloljgw50wDgaRprvN71weqTNHJ+3KKXtqW4TlAjLI+t2nOLR0rVow/Z8AYLLIghF88F+w9USoqtF7QwbQZwABjW7nXjlzp+tdmRnenJHizL0rI91tia6+YoU7SiHB5mMUfNl5fE9b9FZqkRCfopCReACezLXB5aU9d9ADPEt5kMNABFNMUKIuCfzhk+K7BLiKL+NgAIsxB2dY2/8soIgASktXBgrE2KHCeI89RD6SBUUYVX/Jssf1DSiqNFO5ZHXXk9WvKoANaUeQmOBqqt5qtJjVQsMdJPypMF6sidB2ngjeiWnxSrQ2v4vaZ/NVh7WORw78TeZ3EBBrRdWS3dZJ7iFPFb/V1ZcDgNOYgt3QQYA6cXaShu9nF5ya/lFdXaS1ZHITvIE84zfgaB+RUMGtYQ1OE9b7V6/I3yIVM4OgP8gg6r4579ZCk1WRb8="
+    file_glob: true
+    file: dist/*
+    skip_cleanup: true
+    on:
+      branch: master
+      python: 3.5
+      tags: true
+after_deploy:
+  # - if [[ -n $TRAVIS_TAG ]]; then travis_terminate ; fi
+  - pip install travis-bump-version
+  - travis-bump-version --api-token "WP9IiIwWp7hfTSHkcWFuYIfAuQlazg6SWWdHRTJXyZSgkrmSFiA3UrSvv5iSA7OfuJi1AX3mwjPAuZTEGcmJser8x/jE/66kivgp5eZLCXqFc+Qb0jp1+h54gAtTomtsL1rHHadD2reN2DTAABansf49GbpUhtlA9PcJ4eChtMMtQ9Wj6zB4mqzf7qGgmNkyz5U17BvWD7M3hrxCtsgMV4jHaYFJzsUoIY7hcXeUvDVSvekgloljgw50wDgaRprvN71weqTNHJ+3KKXtqW4TlAjLI+t2nOLR0rVow/Z8AYLLIghF88F+w9USoqtF7QwbQZwABjW7nXjlzp+tdmRnenJHizL0rI91tia6+YoU7SiHB5mMUfNl5fE9b9FZqkRCfopCReACezLXB5aU9d9ADPEt5kMNABFNMUKIuCfzhk+K7BLiKL+NgAIsxB2dY2/8soIgASktXBgrE2KHCeI89RD6SBUUYVX/Jssf1DSiqNFO5ZHXXk9WvKoANaUeQmOBqqt5qtJjVQsMdJPypMF6sidB2ngjeiWnxSrQ2v4vaZ/NVh7WORw78TeZ3EBBrRdWS3dZJ7iFPFb/V1ZcDgNOYgt3QQYA6cXaShu9nF5ya/lFdXaS1ZHITvIE84zfgaB+RUMGtYQ1OE9b7V6/I3yIVM4OgP8gg6r4579ZCk1WRb8=" --repo $TRAVIS_REPO_SLUG VERSION

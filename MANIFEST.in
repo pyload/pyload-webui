@@ -1,0 +1,10 @@
+global-exclude *.py[codi] __pycache__
+
+graft pyload/webui/app
+graft pyload/webui/node_modules
+
+include *.md *.rst VERSION
+
+recursive-include locale *.mo *.pot
+recursive-include pyload *.py
+recursive-include requirements *.txt
