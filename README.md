@@ -4,6 +4,7 @@ WebUI module of [**pyLoad**](https://github.com/pyload/pyload),
 *The Free and Open Source download manager written in Pure Python and designed
 to be extremely lightweight, fully customizable and remotely manageable*.
 
+_**Code Status**:_
 
 [![Build Status](https://travis-ci.org/pyload/webui.svg?branch=master)](https://travis-ci.org/pyload/webui)
 [![Requirements Status](https://requires.io/github/pyload/webui/requirements.svg?branch=master)](https://requires.io/github/pyload/webui/requirements/?branch=master)
@@ -19,6 +20,10 @@ _**Contact Us** on:_
 [![Facebook](https://img.shields.io/badge/-facebook-3a589e.svg?logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIiA%2FPjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMzIgMzIiIGhlaWdodD0iMzJweCIgaWQ9IkxheWVyXzEiIHZlcnNpb249IjEuMCIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzJweCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI%2BPGc%2BPHBhdGggZD0iTTMyLDMwYzAsMS4xMDQtMC44OTYsMi0yLDJIMmMtMS4xMDQsMC0yLTAuODk2LTItMlYyYzAtMS4xMDQsMC44OTYtMiwyLTJoMjhjMS4xMDQsMCwyLDAuODk2LDIsMlYzMHoiIGZpbGw9IiMzQjU5OTgiLz48cGF0aCBkPSJNMjIsMzJWMjBoNGwxLTVoLTV2LTJjMC0yLDEuMDAyLTMsMy0zaDJWNWMtMSwwLTIuMjQsMC00LDBjLTMuNjc1LDAtNiwyLjg4MS02LDd2M2gtNHY1aDR2MTJIMjJ6IiBmaWxsPSIjRkZGRkZGIiBpZD0iZiIvPjwvZz48Zy8%2BPGcvPjxnLz48Zy8%2BPGcvPjxnLz48L3N2Zz4%3D)](https://www.facebook.com/pyload)
 [![Join the chat at https://gitter.im/pyload/webui](https://badges.gitter.im/pyload/webui.svg)](https://gitter.im/pyload/webui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![IRC Freenode](https://img.shields.io/badge/irc-freenode-lightgray.svg)](https://kiwiirc.com/client/irc.freenode.com/#pyload)
+
+_**Licensing**:_
+
+[![PyPI](https://img.shields.io/pypi/l/pyload.webui.svg)](https://pypi.python.org/pypi/pyload.webui)
 
 
 > **Notice:**
