@@ -21,7 +21,7 @@ from setuptools import Command, distutils, setup
 from setuptools.command.sdist import sdist
 
 
-def _get_long_description(fromline=None, lines=None):
+def _get_long_description(fromline=None, toline=None):
     try:
         import requests
     except ImportError:
@@ -29,7 +29,7 @@ def _get_long_description(fromline=None, lines=None):
     with io.open('README.md') as fp1:
         readme = ''.join(fp1.readlines()[fromline:lines])
     with io.open('CHANGELOG.md') as fp2:
-        desc = '\r\n\r\n\r\n\r\n'.join([readme, fp2.read()])
+        desc = '\r\n\r\n'.join([readme, fp2.read()])
     req = requests.post(
         url='http://c.docverter.com/convert',
         data={'from': 'markdown', 'to': 'rst'},
@@ -134,7 +134,7 @@ NAME = "pyload.webui"
 VERSION = _get_version()
 STATUS = "1 - Planning"
 DESC = """pyLoad WebUI module"""
-LONG_DESC = _get_long_description(fromline=2, lines=19) or ""
+LONG_DESC = _get_long_description(fromline=1, toline=31) or ""
 KEYWORDS = ["pyload"]
 URL = "https://pyload.net"
 DOWNLOAD_URL = "https://github.com/pyload/webui/releases"
