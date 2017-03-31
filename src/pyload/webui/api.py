@@ -106,7 +106,7 @@ def call_api(func, args=""):
             kwargs[x] = loads(unquote(y))
         except Exception as e:
             # Unsupported input
-            msg = "Invalid Input {0}, {1} : {2}".format(x, y, e.message)
+            msg = "Invalid Input {0}, {1} : {2}".format(x, y, str(e))
             print_exc()
             print(msg)
             return error(415, msg)
@@ -119,10 +119,10 @@ def call_api(func, args=""):
         return json_response(result)
 
     except ExceptionObject as e:
-        return error(400, e.message)
+        return error(400, str(e))
     except Exception as e:
         print_exc()
-        return error(500, {'error': e.message, 'traceback': format_exc()})
+        return error(500, {'error': str(e), 'traceback': format_exc()})
 
 
 @route("/api/login")
