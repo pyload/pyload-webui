@@ -45,7 +45,7 @@ deploy:
     on:
       branch: master
       python: 3.5
-      # tags: true
+      tags: true
   - provider: releases
     api-key: "WP9IiIwWp7hfTSHkcWFuYIfAuQlazg6SWWdHRTJXyZSgkrmSFiA3UrSvv5iSA7OfuJi1AX3mwjPAuZTEGcmJser8x/jE/66kivgp5eZLCXqFc+Qb0jp1+h54gAtTomtsL1rHHadD2reN2DTAABansf49GbpUhtlA9PcJ4eChtMMtQ9Wj6zB4mqzf7qGgmNkyz5U17BvWD7M3hrxCtsgMV4jHaYFJzsUoIY7hcXeUvDVSvekgloljgw50wDgaRprvN71weqTNHJ+3KKXtqW4TlAjLI+t2nOLR0rVow/Z8AYLLIghF88F+w9USoqtF7QwbQZwABjW7nXjlzp+tdmRnenJHizL0rI91tia6+YoU7SiHB5mMUfNl5fE9b9FZqkRCfopCReACezLXB5aU9d9ADPEt5kMNABFNMUKIuCfzhk+K7BLiKL+NgAIsxB2dY2/8soIgASktXBgrE2KHCeI89RD6SBUUYVX/Jssf1DSiqNFO5ZHXXk9WvKoANaUeQmOBqqt5qtJjVQsMdJPypMF6sidB2ngjeiWnxSrQ2v4vaZ/NVh7WORw78TeZ3EBBrRdWS3dZJ7iFPFb/V1ZcDgNOYgt3QQYA6cXaShu9nF5ya/lFdXaS1ZHITvIE84zfgaB+RUMGtYQ1OE9b7V6/I3yIVM4OgP8gg6r4579ZCk1WRb8="
     file_glob: true
@@ -55,7 +55,7 @@ deploy:
       branch: master
       python: 3.5
       tags: true
-after_deploy:
+# after_deploy:
   # - if [[ -n $TRAVIS_TAG ]]; then travis_terminate ; fi
-  - pip install travis-bump-version
-  - travis-bump-version --api-token "WP9IiIwWp7hfTSHkcWFuYIfAuQlazg6SWWdHRTJXyZSgkrmSFiA3UrSvv5iSA7OfuJi1AX3mwjPAuZTEGcmJser8x/jE/66kivgp5eZLCXqFc+Qb0jp1+h54gAtTomtsL1rHHadD2reN2DTAABansf49GbpUhtlA9PcJ4eChtMMtQ9Wj6zB4mqzf7qGgmNkyz5U17BvWD7M3hrxCtsgMV4jHaYFJzsUoIY7hcXeUvDVSvekgloljgw50wDgaRprvN71weqTNHJ+3KKXtqW4TlAjLI+t2nOLR0rVow/Z8AYLLIghF88F+w9USoqtF7QwbQZwABjW7nXjlzp+tdmRnenJHizL0rI91tia6+YoU7SiHB5mMUfNl5fE9b9FZqkRCfopCReACezLXB5aU9d9ADPEt5kMNABFNMUKIuCfzhk+K7BLiKL+NgAIsxB2dY2/8soIgASktXBgrE2KHCeI89RD6SBUUYVX/Jssf1DSiqNFO5ZHXXk9WvKoANaUeQmOBqqt5qtJjVQsMdJPypMF6sidB2ngjeiWnxSrQ2v4vaZ/NVh7WORw78TeZ3EBBrRdWS3dZJ7iFPFb/V1ZcDgNOYgt3QQYA6cXaShu9nF5ya/lFdXaS1ZHITvIE84zfgaB+RUMGtYQ1OE9b7V6/I3yIVM4OgP8gg6r4579ZCk1WRb8=" --repo $TRAVIS_REPO_SLUG VERSION
+  # - pip install travis-bump-version
+  # - travis-bump-version --api-token "WP9IiIwWp7hfTSHkcWFuYIfAuQlazg6SWWdHRTJXyZSgkrmSFiA3UrSvv5iSA7OfuJi1AX3mwjPAuZTEGcmJser8x/jE/66kivgp5eZLCXqFc+Qb0jp1+h54gAtTomtsL1rHHadD2reN2DTAABansf49GbpUhtlA9PcJ4eChtMMtQ9Wj6zB4mqzf7qGgmNkyz5U17BvWD7M3hrxCtsgMV4jHaYFJzsUoIY7hcXeUvDVSvekgloljgw50wDgaRprvN71weqTNHJ+3KKXtqW4TlAjLI+t2nOLR0rVow/Z8AYLLIghF88F+w9USoqtF7QwbQZwABjW7nXjlzp+tdmRnenJHizL0rI91tia6+YoU7SiHB5mMUfNl5fE9b9FZqkRCfopCReACezLXB5aU9d9ADPEt5kMNABFNMUKIuCfzhk+K7BLiKL+NgAIsxB2dY2/8soIgASktXBgrE2KHCeI89RD6SBUUYVX/Jssf1DSiqNFO5ZHXXk9WvKoANaUeQmOBqqt5qtJjVQsMdJPypMF6sidB2ngjeiWnxSrQ2v4vaZ/NVh7WORw78TeZ3EBBrRdWS3dZJ7iFPFb/V1ZcDgNOYgt3QQYA6cXaShu9nF5ya/lFdXaS1ZHITvIE84zfgaB+RUMGtYQ1OE9b7V6/I3yIVM4OgP8gg6r4579ZCk1WRb8=" --repo $TRAVIS_REPO_SLUG VERSION
