@@ -36,7 +36,7 @@ def _extract_text(path, fromline=None, toline=None):
 
 def _pandoc_convert(text):
     import pypandoc
-    return pypandoc.convert_text(text, 'rst', 'markdown_github')
+    return pypandoc.convert_text(text, 'rst', 'markdown').replace('\r', '')
 
 
 def _docverter_convert(text):
@@ -229,8 +229,8 @@ INSTALL_REQUIRES = _get_requires('install.txt')
 SETUP_REQUIRES = _get_requires('setup.txt')
 # TEST_SUITE = ''
 # TESTS_REQUIRE = []
-# EXTRAS_REQUIRE = {}
-# EXTRAS_REQUIRE['full'] = list(set(chain(*EXTRAS_REQUIRE.values())))
+EXTRAS_REQUIRE = {'bjoern;os_name!="nt"': ['bjoern']}
+EXTRAS_REQUIRE['full'] = list(set(chain(*EXTRAS_REQUIRE.values())))
 PYTHON_REQUIRES = ">=2.6,!=3.0,!=3.1,!=3.2"
 CMDCLASS = {
     'build_locale': BuildLocale,
@@ -287,6 +287,7 @@ SETUP_MAP = dict(
     namespace_packages=NAMESPACE_PACKAGES,
     install_requires=INSTALL_REQUIRES,
     setup_requires=SETUP_REQUIRES,
+    extras_require=EXTRAS_REQUIRE,
     python_requires=PYTHON_REQUIRES,
     cmdclass=CMDCLASS,
     message_extractors=MESSAGE_EXTRACTORS,
