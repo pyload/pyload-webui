@@ -2,7 +2,8 @@
 
 from __future__ import absolute_import, unicode_literals
 
-from builtins import object, str
+from builtins import str
+from builtins import object
 
 from bottle import ServerAdapter as _ServerAdapter
 from future import standard_library

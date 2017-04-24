@@ -2,6 +2,7 @@
 
 from __future__ import absolute_import, unicode_literals
 
+from builtins import str
 import io
 from builtins import dict
 from contextlib import closing
@@ -92,10 +93,10 @@ def call_api(func, args=""):
         kwargs = request.json
 
     # file upload, reads whole file into memory
-    for name, f in request.files.items():
-        kwargs['filename'] = f.filename
+    for name, file in request.files.items():
+        kwargs['filename'] = file.filename
         with closing(io.StringIO()) as content:
-            f.save(content)
+            file.save(content)
             kwargs[name] = content.getvalue()
 
     # convert arguments from json to obj separately
