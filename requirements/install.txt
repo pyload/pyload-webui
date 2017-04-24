@@ -1,7 +1,6 @@
 Beaker>=1.6
 Js2Py
-bjoern;os_name!="nt"
 bottle>=0.10
 future
 pycryptodome
-pyload.utils2
+pyload.utils2~=0.5
