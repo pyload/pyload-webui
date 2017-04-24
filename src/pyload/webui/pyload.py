@@ -38,14 +38,12 @@ def download(fid, api):
 @route("/i18n/:lang")
 def i18n(lang=None):
     add_json_header(response)
-
     if lang is None:
         pass
         # TODO: use lang from API.config or setup
     else:
         # TODO: auto choose language
         lang = select_language(("en",))
-
     return json.dumps({})
 
 
