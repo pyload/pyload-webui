@@ -16,7 +16,7 @@ import re
 import shutil
 import subprocess
 
-# from itertools import chain
+from itertools import chain
 
 from setuptools import Command, distutils, find_packages, setup
 from setuptools.command.build_py import build_py
