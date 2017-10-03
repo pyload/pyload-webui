@@ -1,0 +1,5 @@
+[bjoern]
+bjoern;os_name!="nt"
+
+[js2py]
+Js2Py

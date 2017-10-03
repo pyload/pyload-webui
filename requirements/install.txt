@@ -1,6 +1,7 @@
 Beaker>=1.6
-Js2Py
 bottle>=0.10
+cryptography
 future
-pycryptodome
-pyload.utils2~=0.5
+pyload.utils2~=0.6
+semver
+setuptools>=0.6.39
