@@ -22,7 +22,7 @@
         "bootstrap": "^3.3.7",
         "flot" : "flot/flot",
         "font-awesome": "^4.7.0",
-        "handlebars" : "^1.0.0",
+        "handlebars" : "^4.7.6",
         "jed" : "^0.5.4",
         "jquery" : "^1.9.1",
         "jquery.animate-enhanced" : "benbarnett/jquery-animate-enhanced",
